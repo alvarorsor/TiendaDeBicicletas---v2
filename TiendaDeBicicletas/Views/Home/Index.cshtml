@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Princípal";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  
+
+ <!-- Bootstrap CSS 
+<link rel="shortcut icon" type="image/x-icon" href="imagenes/logo_celular.png">
+<link rel="stylesheet" type="text/css" href="css/estilos.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script defer src="https://kit.fontawesome.com/4271e6ee17.js" crossorigin="anonymous"></script>
+     -->
+
+<body>
+
+
+<div class="container panel-title text-center">
+
+
+    <h2 style="color:deepskyblue">Bienvenidos a Two Wheels</h2>
+
+
+    <p class="text-center">
+        Somos un negocio dedicado a la venta de bicicletas, nos destacamos de la competencia
+        por nuestros mas de 20 años de experiencia en el mercado, brindando ayuda, soluciones
+        y calidad a nuestros clientes.
+    </p>
+    <br />
+
+</div> 
+
+
+
+
+ <!-- Caroussel ------------------------------------------------------->
+
+<div style="display: flex;
+
+    align-items:center;
+
+    justify-content: space-around">
+
+    <!-- Columna izquierda ------------------------------------------------------->
+
+    <div class="carousel" style="max-width: 453px; max-height: 250px;">
+
+      
+        <div class="carousel-item active">
+            <img src="https://i.pinimg.com/564x/65/78/c9/6578c94f8ad5df264195ea2eb4b67d1c.jpg" style="max-width: 500px; max-height: 300px" class="d-block w-100" alt="...">
+        </div>
+
+      
+    </div>
+
+    <!-- Columna derecha ------------------------------------------------------->
+    <div class="carousel" style="max-width: 453px; max-height: 250px;">
+
+
+        <div class="carousel-item active">
+            <img src="https://i.pinimg.com/564x/92/1c/55/921c55c12423d67865f653b7061f7222.jpg" style="max-width: 500px; max-height: 300px" class="d-block w-100" alt="...">
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+ <!-- Container inicio sesion ------------------------------------------------------->
+
+<br /><br /><br /><br /><br /><br />
+
+<div class="container panel-footer">
+
+    @{ 
+
+        if (!string.IsNullOrEmpty(ViewBag.Message)) {
+
+            //message tiene un valor
+
+        <div class="alert alert-danger">@ViewBag.Message</div> 
+
+        }
+
+
+    }
+
+
+
+    <form action="Home/Login" method="post">
+        <div class="form-group">
+            <label>Ingresa tu email</label>
+            <input type="text" name="email" value="" />
+
+        </div>
+        <div class="form-group">
+            <label>Ingresa tu contraseña</label>
+            <input type="password" name="password" value="" />
+
+        </div>
+        <div class="form-group">
+            <button class="btn-primary">Iniciar sesion</button>
+        </div>
+    </form>
+
+
+
+</div>
+
+
+
+
+
+<footer style="background-color:white">
+    <hr>
+    <div class="row align-items-center">
+        <div class="col-3 col-md-3 ">
+            <div class="footer-copyright">
+                
+                <p> TWO WHEELS TODOS LOS DERECHOS RESERVADOS © 2021</p>
+            </div>
+        </div>
+      
+      
+        <div class="col-2 col-md-2">
+            <img src="imagenes/logo_celular.png" width="44px" alt="logo" style="border-radius: 10px">
+        </div>
+    </div>
+    <hr>
+</footer>
+
+

@@ -1,0 +1,35 @@
+﻿@model TiendaDeBicicletas.categories
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de la categoria @Model.category_name</h2>
+
+<div>
+    <h4>categories</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+          ID de Categoria
+        </dt>
+
+        <dd>
+            @Model.category_id
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.category_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

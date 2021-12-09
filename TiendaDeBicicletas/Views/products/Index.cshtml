@@ -1,0 +1,126 @@
+﻿@model IEnumerable<TiendaDeBicicletas.products>
+
+@{
+    ViewBag.Title = "Gestionar productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   
+    <h2>Gestionar productos</h2>
+
+    <p>
+        @Html.ActionLink("Crear nuevo producto", "Create")
+
+        @using (Html.BeginForm())
+        {
+        <p>
+            Nombre: @Html.TextBox("SearchString") <br />
+          
+      
+
+            <br>
+
+        Modelo: @Html.TextBox("SearchString2") <br />
+
+
+
+            <br>
+
+            Categoria: @Html.TextBox("SearchString3") <br />
+
+
+            <br>
+
+            Precio: @Html.TextBox("SearchString4") <br />
+
+            <br>
+        <input class="btn btn-block" type="submit" value="Buscar" />
+    </p>
+        }
+    </p>
+
+
+
+
+
+
+
+
+    <br><br>
+
+
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.product_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.model_year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brands.brand_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categories.category_name)
+            </th>
+            
+
+
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.model_year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.list_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brands.brand_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categories.category_name)
+                </td>
+               
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.product_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
+                </td>
+            </tr>
+
+        }
+
+
+
+    </table>
+
+
+    <script>
+           $(document).ready(function(){
+              $("#myinput").on("keyup",function(){
+                var value=$(this).val().toLowerCase();
+                $("#mytable tr").filter(function(){
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+                });
+              });
+           });
+    </script>
+
+
+    </main>

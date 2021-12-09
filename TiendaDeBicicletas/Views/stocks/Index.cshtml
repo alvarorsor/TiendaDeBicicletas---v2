@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TiendaDeBicicletas.stocks>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gestionar stock</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo stock", "Create")
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        Nombre del producto: @Html.TextBox("SearchString") <br />
+        <br />
+        Nombre de la tienda: @Html.TextBox("SearchString2") <br /> 
+        <br />
+        <input class="btn btn-block" type="submit" value="Buscar" />
+    </p>
+    }
+
+
+
+ <!--   <div>
+        <p>
+            Ingrese el stock
+            <input type="text" value="" class="text-info" />
+            <input type="button" value="Calcular" class="btn btn-info" />
+        </p>
+    </div>
+     -->
+
+
+
+
+    </p>
+
+
+
+<table class="table table-bordered table-hover table-striped ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.products.product_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stores.store_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.products.product_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stores.store_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new {  /* id=item.PrimaryKey */}) |
+            @Html.ActionLink("Delete", "Delete", new {  /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<TiendaDeBicicletas.orders>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create nueva orden", "Create")
+
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        Nombre del cliente: @Html.TextBox("SearchString") <br />
+        <br />
+
+        Nombre de la tienda: @Html.TextBox("SearchString2") <br />
+        <br />
+       
+        <input class="btn btn-block" type="submit" value="Buscar" />
+    </p>
+    }
+    
+</p>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.order_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.order_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.required_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipped_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customers.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.staffs.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stores.store_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.order_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.order_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.required_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shipped_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customers.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.staffs.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stores.store_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.order_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.order_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.order_id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<script>
+           $(document).ready(function(){
+              $("#myinput").on("keyup",function(){
+                var value=$(this).val().toLowerCase();
+                $("#mytable tr").filter(function(){
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+                });
+              });
+           });
+</script>
